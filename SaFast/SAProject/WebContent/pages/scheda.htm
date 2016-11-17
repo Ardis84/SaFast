@@ -1,0 +1,22 @@
+<div class="scheda {v:classes}" id="scheda_{v:id}" >
+<input type="hidden" id="id_{v:id}" value="{v:idschedeanalisi}"/>
+<!-- <div class="numscheda" id="numscheda_{v:id}" onclick="openCloseScheda('testo_{v:id}')">{v:scheda}</div>
+<div class="datarichiesta" id="datarichiesta_{v:id}" onclick="openCloseScheda('testo_{v:id}')">{v:datarichiesta}</div>
+<div class="procedura" id="procedura_{v:id}" onclick="openCloseScheda('testo_{v:id}')">{v:procedura}</div> -->
+<table style="float:left;">
+<tr onclick="openCloseScheda('{v:id}','{v:path}')">
+<td class="rowScheda important" id="important_{v:id}" >{v:important}</td>
+<td class="rowScheda numscheda" id="numscheda_{v:id}">{v:scheda}</td>
+<td class="rowScheda datarichiesta" id="datarichiesta_{v:id}">{v:datarichiesta}</td>
+<td class="rowScheda procedura" id="procedura_{v:id}">{v:procedura}</td>
+<td class="rowScheda cliente" id="cliente_{v:id}">{v:cliente}</td>
+</tr>
+</table>
+<table>
+<tr>
+	<td class="rowScheda allegati" id="allegati_{v:id}">{v:allegati}</td>
+</tr>
+</table>
+<div class="testo" id="testo_{v:id}">{v:testo}</div>
+
+</div>

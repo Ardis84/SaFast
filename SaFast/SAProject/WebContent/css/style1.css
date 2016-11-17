@@ -1,0 +1,113 @@
+.container{
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:0;
+	padidng:0;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.saGrid{
+	font-size: 12px;
+}
+
+.saGrid th{
+	background-color: #0000ff;
+}
+
+.saGrid td{
+	border-bottom: 1px solid grey;
+}
+
+.scheda{
+	max-width: 50%;
+    margin: 0 auto;
+   /* margin-bottom: 15px;*/
+    clear: both;
+    border: 1px solid #CFD5D6;
+    border-left: 0;
+    border-right: 0;
+}   
+
+.scheda .datarichiesta,
+.scheda .numscheda,
+.scheda .procedura,
+.rowScheda{
+	cursor: pointer;
+	margin-bottom:3px;
+	float: left;
+	margin-left:15px;
+} 
+
+.scheda .numscheda{
+	width:100px;
+}
+
+.scheda .procedura{
+	clear:right;	
+}
+
+.scheda .cliente,
+.scheda .procedura{
+	width: 250px;
+}
+
+.scheda table{
+	font-size: 14px;
+}
+
+.testo{
+	display:none;
+	clear: both;
+}
+
+.pari{
+	background-color: #DDF7FE;
+}
+
+.dispari{
+	background-color: #EDFCFF;
+}
+
+.pari,
+.dispari{
+	cursor:pointer;
+}
+
+.pari:hover,
+.dispari:hover{
+	background-color: #EFFAD0;
+	
+}
+
+.pari tr,
+.dispari tr{
+	height: 30px;
+	line-height: 25px;
+}
+
+.important{
+	width: 40px;
+}
+
+.important img{
+	width:24px;
+}
+
+.field{
+	float:left;
+	margin:5px;
+}
+
+.imgAllegati{
+	cursor:pointer;
+	width:24px;
+}
+
+.allegatiUl{
+	cursor:pointer;
+}
