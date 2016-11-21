@@ -60,18 +60,40 @@ public class FileUtils {
 		return doc;
 	}
 	
-	public static void scriviFile(String percorso, String item) throws IOException{
+	public static void scriviFile(String percorso, String item, boolean isItemToDelete) throws IOException{
 		String contenuto="";
-		File f = new File(percorso);
-		if(!f.exists())
-			f.createNewFile();
-		else
-			contenuto = getStrFile(percorso);
-		if(!contenuto.contains(item)){
-			FileOutputStream fos = new FileOutputStream(f);
-			contenuto += item;
-			fos.write(contenuto.getBytes());
-			fos.close();
+		if(!isItemToDelete){
+			File f = new File(percorso);
+			if(!f.exists())
+				f.createNewFile();
+			else
+				contenuto = getStrFile(percorso);
+			if(!contenuto.contains(item)){
+				FileOutputStream fos = new FileOutputStream(f);
+				contenuto += item;
+				fos.write(contenuto.getBytes());
+				fos.close();
+			}
+		
+		}else if(isItemToDelete){
+			BufferedReader br;
+			String doc="";
+			String line;
+			try {
+				br = new BufferedReader(new FileReader(percorso));
+				while ((line = br.readLine()) != null) {
+					if(!line.contains(item))
+						doc += line+"\n";
+				}
+				File f = new File(percorso);
+				FileOutputStream fos = new FileOutputStream(f);
+				contenuto += item;
+				fos.write(doc.getBytes());
+				fos.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		
 	}

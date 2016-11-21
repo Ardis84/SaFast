@@ -79,4 +79,14 @@
     <servlet-name>AllegatiScheda</servlet-name>
     <url-pattern>/AllegatiScheda</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FileDownload</display-name>
+    <servlet-name>FileDownload</servlet-name>
+    <servlet-class>safast.action.FileDownload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileDownload</servlet-name>
+    <url-pattern>/FileDownload</url-pattern>
+  </servlet-mapping>
 </web-app>

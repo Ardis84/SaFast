@@ -21,12 +21,17 @@ public class SchedeUtils {
 		return isImportant;		
 	}
 	
-	public static String insertSchedaImportante(String numsch) throws IOException{
+	public static void  insertSchedaImportante(String numsch) throws IOException{
 		String path = ClassPathManager.getPath();
 		String percorso = path+"/WebContent/info/schede_importanti.txt";
-		FileUtils.scriviFile(percorso, "--"+numsch);
-		
-		return "ciao";
+		FileUtils.scriviFile(percorso, "--"+numsch, false);
+
+	}
+
+	public static  void deleteSchedaImportante(String numsch) throws IOException {
+		String path = ClassPathManager.getPath();
+		String percorso = path+"/WebContent/info/schede_importanti.txt";
+		FileUtils.scriviFile(percorso, "--"+numsch, true);	
 	}
 
 }

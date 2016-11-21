@@ -77,11 +77,7 @@ public class ElencoSchedePersonale extends HttpServlet {
 					String cliente 			= res.getString("cliente");
 					String identifier 		= res.getString("identifier");
 					String classes="";
-					if(c%2==0){
-						classes = " pari ";
-					}else
-						classes = " dispari ";
-					c++;
+					
 					HashMap<String, Object> params = new HashMap<>();
 					params.put("idschedeanalisi", idschedeanalisi);
 					params.put("scheda", scheda);
@@ -92,7 +88,7 @@ public class ElencoSchedePersonale extends HttpServlet {
 					params.put("procedura", procedura);
 					params.put("cliente", cliente);
 					params.put("id", identifier);
-					params.put("classes", classes);
+					
 					String path ="";
 					path = request.getContextPath();
 					params.put("path", path);
@@ -113,9 +109,17 @@ public class ElencoSchedePersonale extends HttpServlet {
 					
 					if(isImportant){
 						params.put("important", redstar);
+						classes = " schedaImportant ";
+						params.put("classes", classes);
 						schedeImportanti += tu.getBody("scheda.htm",params, request);
 					}else{
 						params.put("important", "");
+						if(c%2==0){
+							classes = " pari ";
+						}else
+							classes = " dispari ";
+						c++;
+						params.put("classes", classes);
 						schede += tu.getBody("scheda.htm",params, request);
 					}
 				}

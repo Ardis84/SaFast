@@ -38,7 +38,7 @@
 .scheda .procedura,
 .rowScheda{
 	cursor: pointer;
-	margin-bottom:3px;
+	/*margin-bottom:3px;*/
 	float: left;
 	margin-left:15px;
 } 
@@ -57,7 +57,7 @@
 }
 
 .scheda table{
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .testo{
@@ -74,24 +74,28 @@
 }
 
 .pari,
-.dispari{
+.dispari,
+.schedaImportant{
 	cursor:pointer;
 }
 
 .pari:hover,
-.dispari:hover{
+.dispari:hover,
+.schedaImportant:hover{
 	background-color: #EFFAD0;
 	
 }
 
 .pari tr,
-.dispari tr{
-	height: 30px;
+.dispari tr,
+.schedaImportant tr{
+	height: 25px;
 	line-height: 25px;
 }
 
 .important{
 	width: 40px;
+	min-height: 1px;
 }
 
 .important img{
@@ -110,4 +114,8 @@
 
 .allegatiUl{
 	cursor:pointer;
+}
+
+.schedaImportant{
+	background-color: #FFE8D3 !important;
 }

@@ -28,8 +28,12 @@ public class ImportantScheda extends HttpServlet {
 	@SuppressWarnings("static-access")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String numsch = request.getParameter("numsch");
+		String type = request.getParameter("type");
 		SchedeUtils su = new SchedeUtils();
-		su.insertSchedaImportante(numsch);
+		if(type.equals("important"))
+			su.insertSchedaImportante(numsch);
+		else
+			su.deleteSchedaImportante(numsch);
 	}
 
 	/**

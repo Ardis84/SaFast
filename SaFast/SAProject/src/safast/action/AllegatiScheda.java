@@ -13,6 +13,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.sql.Blob;
 import java.sql.ResultSet;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +27,7 @@ import safast.utils.DbUtils;
  */
 public class AllegatiScheda extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final int BUFFER_SIZE = 4096;  
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -59,7 +60,24 @@ public class AllegatiScheda extends HttpServlet {
 					String path ="";
 					path = request.getContextPath();
 					
-					dialog += "<li class='allegatiUl' onclick='downloadAllegati(\""+idallegati+"\",\""+path+"\")'>"+nomefile+"</li>";
+					//Che estensione ha il file
+					String[] filePart = nomefile.split("\\.");
+					String ext = filePart[filePart.length-1];
+					String eccezzioni = "sql,htm,html,php,asp,txt,jpg,jpeg,gif,png,bmp,pdf";
+					String target="";
+					if(eccezzioni.contains(ext)){
+						target = "target='_blank'";
+					}else{
+						target="";
+					}
+
+					dialog += "<li class='allegatiUl' onclick='downloadAllegati(\""+idallegati+"\",\""+path+"\")'>"
+							+nomefile
+							+ "</li>"
+							+ "<a href='allegati/"+nomefile+"' id='"+nomefile.trim()+"' "+target+">"
+							+"</a>";
+				
+					
 				}
 			}catch (Exception e) {
 				// TODO: handle exception
@@ -82,7 +100,8 @@ public class AllegatiScheda extends HttpServlet {
 					ByteArrayOutputStream bos = new ByteArrayOutputStream();
 //					File f = new File(path+"WebContent/allegati/"+nomefile);
 //					f.createNewFile();
-					FileOutputStream outputStream = new FileOutputStream(path+"WebContent/allegati/"+nomefile);
+					String url = path+"/WebContent/allegati/"+nomefile;
+					FileOutputStream outputStream = new FileOutputStream(url);
 					
 					int bufferSize = 1024;
 			        int length = (int) filescan.length();
@@ -98,16 +117,45 @@ public class AllegatiScheda extends HttpServlet {
 			        
 			        outputStream.close();
 			        
-			        String cp = request.getContextPath();
+			        out.write(nomefile.trim());
 			        
-			        URL website = new URL(cp+"/file.java");
-			        ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-
-			        outputStream.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+					/*
+					InputStream inputStream = filescan.getBinaryStream();
+	                int fileLength = inputStream.available();
+	                 
+	                System.out.println("fileLength = " + fileLength);
+	 
+	                ServletContext context = getServletContext();
+	 
+	                // sets MIME type for the file download
+	                String mimeType = context.getMimeType(nomefile);
+	                if (mimeType == null) {        
+	                    mimeType = "application/octet-stream";
+	                }              
+	                 
+	                // set content properties and header attributes for the response
+	                response.setContentType(mimeType);
+	                response.setContentLength(fileLength);
+	                String headerKey = "Content-Disposition";
+	                String headerValue = String.format("attachment; filename=\"%s\"", nomefile);
+	                response.setHeader(headerKey, headerValue);
+	 
+	                // writes the file to the client
+	                OutputStream outStream = response.getOutputStream();
+	                 
+	                byte[] buffer = new byte[BUFFER_SIZE];
+	                int bytesRead = -1;
+	                 
+	                while ((bytesRead = inputStream.read(buffer)) != -1) {
+	                    outStream.write(buffer, 0, bytesRead);
+	                }
+	                 
+	                inputStream.close();
+	                outStream.close();*/
 			        
 				}
 			}catch (Exception e) {
-				// TODO: handle exception
+				System.out.println(e);
 			}
 		}
 		

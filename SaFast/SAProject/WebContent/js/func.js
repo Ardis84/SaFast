@@ -6,12 +6,44 @@ function replaceAll(target, search, replacement) {
     return target.split(search).join(replacement);
 }
 
-function doCloseScheda(){
-	alert("bau");
-	$form = $("#chiudiScheda");
-		$numScheda = $("#numScheda");
-		$info = $("#info");
-		$ore = $("#ore");
+function fireEvent(obj,evt){
+	
+	var fireOnThis = obj;
+	if( document.createEvent ) {
+	  var evObj = document.createEvent('MouseEvents');
+	  evObj.initEvent( evt, true, false );
+	  fireOnThis.dispatchEvent(evObj);
+	} else if( document.createEventObject ) {
+	  fireOnThis.fireEvent('on'+evt);
+	}
+}
+
+function viewAllegati(id, path){
+	var itm = "id_"+id;
+	var progressivo = byId(itm).value;
+	$.ajax(path+"/AllegatiScheda?progressivo="+progressivo+"&scarica=0" )
+	  .done(function(res) {
+		 $("<div>"+res+"</div>").dialog({
+		      modal: true,
+		      position: { my: 'top', at: 'top+150' },
+		      width:600,
+		      height:300,
+		      title:"Elenco Allegati"
+		  });
+	  })
+	  .fail(function(res) {
+	 //   alert( "error" );
+	  });
+}
+
+function downloadAllegati(idallegati, path){
+	$.ajax(path+"/AllegatiScheda?idallegati="+idallegati+"&scarica=1" )
+	  .done(function(res) {
+		  fireEvent(document.getElementById(res),'click');
+	  })
+	  .fail(function(res) {
+	 //   alert( "error" );
+	  });
 }
 
 function openCloseScheda(id, path){
@@ -30,9 +62,11 @@ function openCloseScheda(id, path){
 		      title:"Scheda: "+numsch,
 		      buttons: {
 		    	  	Normale: function() {
-			    	  	$.ajax(path+"/ImportantScheda?numsch="+numsch )
+			    	  	$.ajax(path+"/ImportantScheda?numsch="+numsch+"&type=normal" )
 			    	  	  .done(function() {
-			    	  		  $("#"+itm).dialog("close");
+			    	  		caricaSchede();
+			    	  		$("#"+itm).dialog("close");
+			    	  		 openCloseScheda(id, path);
 			    	  	  })
 			    	  	  .fail(function() {
 			    	  	  });
@@ -119,7 +153,7 @@ function openCloseScheda(id, path){
 	      title:"Scheda: "+numsch,
 	      buttons: {
 	    	  	Importante: function() {
-		    	  	$.ajax(path+"/ImportantScheda?numsch="+numsch )
+		    	  	$.ajax(path+"/ImportantScheda?numsch="+numsch+"&type=important" )
 		    	  	  .done(function() {
 		    	  		caricaSchede();
 		    	  		$("#"+itm).dialog("close");
@@ -204,32 +238,6 @@ function openCloseScheda(id, path){
 	}
 }
 
-function viewAllegati(id, path){
-	var itm = "id_"+id;
-	var progressivo = byId(itm).value;
-	$.ajax(path+"/AllegatiScheda?progressivo="+progressivo+"&scarica=0" )
-	  .done(function(res) {
-		 $("<div>"+res+"</div>").dialog({
-		      modal: true,
-		      position: { my: 'top', at: 'top+150' },
-		      width:600,
-		      height:300,
-		      title:"Elenco Allegati"
-		  });
-	  })
-	  .fail(function(res) {
-	 //   alert( "error" );
-	  });
-}
 
-function downloadAllegati(idallegati, path){
-	$.ajax(path+"/AllegatiScheda?idallegati="+idallegati+"&scarica=1" )
-	  .done(function(res) {
-		 
-	  })
-	  .fail(function(res) {
-	 //   alert( "error" );
-	  });
-}
 
 
