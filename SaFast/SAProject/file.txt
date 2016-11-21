@@ -1,0 +1,173 @@
+<!doctype html>
+
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="theme-color" content="#235C88">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <link rel="icon" sizes="192x192" href="img/apple-touch-icon.png">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    
+    <meta name="keywords" content="laziitv,shay,concepts,andrew,software,developer,java,imgur,gallery,galleries,album,albums,downloader,imgurgallerydownloader,imgurgalleryalbumdownloader,imgurgallery&albumdownloader,download,imgur album downloader,imgur gallery downloader">
+    <meta name="description" content="Official site for shayConcepts">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="css/main.css">
+
+    <script async src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script><title>Home</title>
+<body>
+
+    <div class="header-container">
+        <header class="wrapper clearfix">
+            <a href="index.php">
+                <img id="logo" src="img/logo.png" />
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="http://shayconcepts.com/blog">Blog</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+    <div class="main-container">        <div class="section">
+            <div class="main wrapper clearfix">
+                <h1 id="laziitv">LaziiTV</h1>
+                <div class="underline"></div>
+                <div class="content-wrapper">
+                    <div class="content-left">
+                        LaziiTV (pronounced "lazy tv") is a program that simulates the classic TV experience with video files that are stored on your computer. LaziiTV works by allowing you to define different channels and which video files will play on that channel. When a channel is loaded, a random video will start playing. LaziiTV also features expected functions like, changing the channel, pausing, and more.
+                        <br>
+                        <br> Version: 1.0.3
+                        <br> Development: Active
+                        <br> Requirements: <a href="http://www.microsoft.com/en-us/download/details.aspx?id=14632">Windows and Microsoft Visual C++ 2010 Redistributable Package (x64)</a>
+                    </div>
+
+                    <div class="content-right">
+                        <img src="img/laziitv-preview-small.png" />
+                        <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RM97KGYQEUH9Q">Donate</a>
+                    </div>
+
+                </div>
+                <div style="clear: both;"></div>
+                <div class="download-bar">
+                    <a href="/programming/LaziiTV/Install-LaziiTV-v1.0.3.exe"><img src="img/downloadIcon-installexe.png" /></a>
+                    <a href="https://github.com/shayConcepts/LaziiTV"><img src="img/downloadIcon-github.png" /></a>
+                </div>
+
+            </div>
+        </div>
+        <!-- section -->
+
+
+        <div class="section">
+            <div class="main wrapper clearfix">
+                <h1 id="imgur">imgur Gallery & Album Downloader</h1>
+                <div class="underline"></div>
+                <div class="content-wrapper">
+                    <div class="content-left">
+                        imgur Gallery&Album Downloader will download all the images from an imgur gallery or album, or a reddit subreddit and save them to your computer.
+                        <br>
+                        <br> Version: 2.0.13
+                        <br> Development: Active
+                        <br> Requirements: Java
+                        <br> *Run as administrator
+                    </div>
+
+                    <div class="content-right">
+                        <img src="img/imgur-preview-small.png" />
+                        <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RM97KGYQEUH9Q">Donate</a>
+                    </div>
+
+                </div>
+                <div style="clear: both;"></div>
+                <div class="download-bar">
+                    <a href="/programming/ImgurGalleryDownloader/Install-imgurGalleryAlbumDownloader-v2.0.13.exe"><img src="img/downloadIcon-installexe.png" /></a>
+                    <a href="/programming/ImgurGalleryDownloader/imgurGalleryDownloaderv2.0.13jar.zip"><img src="img/downloadIcon-jar.png" /></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.shayConcepts.imgurgalleryalbumdownloadertwo"><img src="img/downloadIcon-android.png" /></a>
+                </div>
+
+            </div>
+        </div>
+        <!-- section -->
+
+
+
+        <div class="section">
+            <div class="main wrapper clearfix">
+                <h1 id="giantcamera">Giant Camera Button</h1>
+                <div class="underline"></div>
+                <div class="content-wrapper">
+                    <div class="content-left">
+                        Giant Camera Button is an app for Android that makes taking selfies with the back facing camera easy! The app is nearly one giant camera button!
+                        <br>
+                        <br> Version: 1.0
+                        <br> Development: Active
+                    </div>
+
+                    <div class="content-right">
+                        <img src="img/giantcamerabutton-preview-small.png" />
+                        <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RM97KGYQEUH9Q">Donate</a>
+                    </div>
+
+                </div>
+                <div style="clear: both;"></div>
+                <div class="download-bar">
+                    <a href="https://play.google.com/store/apps/details?id=com.shayconcepts.giantcamerabutton"><img src="img/downloadIcon-android.png" /></a>
+                </div>
+
+            </div>
+        </div>
+        <!-- section -->
+
+
+
+
+        <div class="section">
+            <div class="main wrapper clearfix">
+                <h1 id="sleeptimer">Smart Sleep Timer</h1>
+                <div class="underline"></div>
+                <div class="content-wrapper">
+                    <div class="content-left">
+                        Smart Sleep Timer will put your computer to Sleep, Hibernate, or Shutdown at a specific time and day chosen by the user.
+                        <br>
+                        <br> Version: 1.0.1
+                        <br> Development: Not Active
+                        <br> Requirements: Java 7 & Windows 7
+                    </div>
+
+                    <div class="content-right">
+                        <img src="img/SmartSleepTimerPreviewSmall.png" />
+                        <a class="donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RM97KGYQEUH9Q">Donate</a>
+                    </div>
+
+                </div>
+                <div style="clear: both;"></div>
+                <div class="download-bar">
+                    <a href="/programming/SmartSleepTimer/Install-SmartSleepTimerv1.0.1.exe"><img src="img/downloadIcon-installexe.png" /></a>
+                    <a href="https://github.com/shayConcepts/SmartSleepTimer"><img src="img/downloadIcon-github.png" /></a>
+                </div>
+
+            </div>
+        </div>
+        <!-- section -->
+        <div class="push"></div>
+    </div>
+    <!-- #main-container -->
+
+    <div class="footer-container">
+        <footer style="padding-top: 45px;" class="wrapper">
+            <span style="color: #c9c9c9;">shayConcepts 2016</span>
+        </footer>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+    </script>
+</body>
+
+</html>
