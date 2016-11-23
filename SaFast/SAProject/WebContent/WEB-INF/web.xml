@@ -89,4 +89,14 @@
     <servlet-name>FileDownload</servlet-name>
     <url-pattern>/FileDownload</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ElencoSchedeTutte</display-name>
+    <servlet-name>ElencoSchedeTutte</servlet-name>
+    <servlet-class>safast.action.ElencoSchedeTutte</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ElencoSchedeTutte</servlet-name>
+    <url-pattern>/ElencoSchedeTutte</url-pattern>
+  </servlet-mapping>
 </web-app>

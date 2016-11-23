@@ -1,3 +1,5 @@
+SELECT *
+FROM (
 select 	sa.progressivo as idschedeanalisi,
 		sa.NUMEROSCHEDA as scheda,
 		sa.NUMEROSCHEDA as identifier,
@@ -15,5 +17,8 @@ from 	SCHEDEANALISI sa,
 where	sa.IDPROGRAMMATORE = p.IDPERSONALE(+)
 and 	ans.IDSCHEDAANALISI(+) = sa.PROGRESSIVO
 and 	ans.CONVALIDADATAORA is null
-and 	sa.numeroscheda = ?
 /****/
+order by sa.NUMEROSCHEDA desc
+)
+WHERE rownum<100
+

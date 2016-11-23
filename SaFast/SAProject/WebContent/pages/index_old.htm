@@ -32,22 +32,6 @@
 	display:none;
 }
 
-#linkToSchede{
-    overflow: hidden;
-    text-align: center;
-    margin: 0 auto;
-    width: 700px;
-}
-
-#linkToSchede input {
-	margin-right: 3px;
-	margin-left: 3px;
-}
-
-.left{
-	float:left;
-}
-
 </style>
 
 <script src="js/jquery-3.1.1.js" lang="text/javascript"></script>
@@ -57,28 +41,8 @@
 
 <script lang="javascript">
 
-function cercaScheda(){
-	var path = window.location.pathname;
-	var url      = window.location.href;
-	
-	var clouds = document.getElementById("clouds");
-	var loader = document.getElementById("loader");
-	
-	clouds.style.display = 'inline';
-	loader.style.display = 'inline';
-	
-	$elenco = $("#elenco");
-	var numscheda = document.getElementById("numeroscheda").value;
-	$.ajax(path+"/ViewScheda?numeroscheda="+numscheda)
-	  .done(function(el) {
-		$elenco.empty();
-	 	$elenco.append(el);
-	 	clouds.style.display = 'none';
-		loader.style.display = 'none';
-	  })
-	  .fail(function(el) {
-		   alert( "Errore nel caricamento delle schede" );
-	  });
+function goJava(){
+	document.getElementById('goJava').submit();
 }
 
 function caricaSchede(){
@@ -92,32 +56,8 @@ function caricaSchede(){
 	loader.style.display = 'inline';
 	
 	$elenco = $("#elenco");
-	$.ajax(path+"/ElencoSchedeTutte" )
-	  .done(function(el) {
-		$elenco.empty();
-	 	$elenco.append(el);
-	 	clouds.style.display = 'none';
-		loader.style.display = 'none';
-	  })
-	  .fail(function(el) {
-		   alert( "Errore nel caricamento delle schede" );
-	  });
-}
-
-function caricaSchedePersonali(){
-	var path = window.location.pathname;
-	var url      = window.location.href;
-	
-	var clouds = document.getElementById("clouds");
-	var loader = document.getElementById("loader");
-	
-	clouds.style.display = 'inline';
-	loader.style.display = 'inline';
-	
-	$elenco = $("#elenco");
 	$.ajax(path+"/ElencoSchedePersonale" )
 	  .done(function(el) {
-		$elenco.empty();
 	 	$elenco.append(el);
 	 	clouds.style.display = 'none';
 		loader.style.display = 'none';
@@ -139,7 +79,7 @@ function caricaSchedePersonali(){
 
 <div id="container">
 
-	<!-- <form id="goJava" method="post" action="ViewScheda">
+	<form id="goJava" method="post" action="ViewScheda">
 		<label for="numeroscheda">Num. Scheda</label>
 		<input type="text" id="numeroscheda" name="numeroscheda"/>
 		<label for="cliente">Cliente</label>
@@ -147,17 +87,8 @@ function caricaSchedePersonali(){
 			<option>Tutti</option>
 		</select>
 		<input type="submit" value="Cerca..."/>
-	</form>-->
-	<div id="linkToSchede">
-		<input class="left" type="button" value="Schede Personali" onclick="caricaSchedePersonali()"/>
-		<input class="left" type="button" value="Schede Generale" onclick="caricaSchede()"/>
-		
-		<form id="goJava" method="post" action="ViewScheda" class="left">
-			<label for="numeroscheda">Cerca Scheda</label>
-			<input type="text" id="numeroscheda" name="numeroscheda"/>
-			<input type="button" value="Cerca..." onclick="cercaScheda()"/>
-		</form>
-	</div>
+	</form>
+	
 	<div id="elenco"></div>
 </div>
 
