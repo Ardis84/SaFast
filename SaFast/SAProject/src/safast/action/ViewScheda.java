@@ -68,10 +68,7 @@ public class ViewScheda extends HttpServlet {
 		qry = qu.setParam(qry,numeroscheda);
 		//qry = qu.setParam(qry,numerorichiesta);
 		
-		System.out.println("/**************************/");
-		System.out.println(qry);
-		System.out.println("/**************************/");
-		
+		String schedeImportanti="";
 		String schede="";
 		ResultSet res = DbUtils.executeQuery(qry);
 			try {			
@@ -104,15 +101,41 @@ public class ViewScheda extends HttpServlet {
 					path = request.getContextPath();
 					params.put("path", path);
 					
+					//Controllo se ci sono allegati
+					int numAllegati = res.getInt("numallegati");
+					String allegati ="";
+					if(numAllegati>0){
+						 	
+							allegati = "<img class='imgAllegati' onclick='viewAllegati(\""+identifier+"\",\""+path+"\")' src='css/images/attach.png'/>";
+						
+					}
+					
+					params.put("allegati", allegati);
+					
 					/* Controllo se la scheda è segnata come importante */
 					boolean isImportant = SchedeUtils.checkSchedaImportante(scheda);
 					//redstar = redstar.replaceAll("/", "\\\\");
-					if(isImportant)
+//					if(isImportant)
+//						params.put("important", redstar);
+//					else
+//						params.put("important", "");
+//					
+//					schede += tu.getBody("scheda.htm",params, request);
+					if(isImportant){
 						params.put("important", redstar);
-					else
+						classes = " schedaImportant ";
+						params.put("classes", classes);
+						schede += tu.getBody("scheda.htm",params, request);
+					}else{
 						params.put("important", "");
-					
-					schede += tu.getBody("scheda.htm",params, request);
+						if(c%2==0){
+							classes = " pari ";
+						}else
+							classes = " dispari ";
+						c++;
+						params.put("classes", classes);
+						schede += tu.getBody("scheda.htm",params, request);
+					}
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -99,4 +99,34 @@
     <servlet-name>ElencoSchedeTutte</servlet-name>
     <url-pattern>/ElencoSchedeTutte</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ElencoPersonale</display-name>
+    <servlet-name>ElencoPersonale</servlet-name>
+    <servlet-class>safast.action.ElencoPersonale</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ElencoPersonale</servlet-name>
+    <url-pattern>/ElencoPersonale</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SetCookie</display-name>
+    <servlet-name>SetCookie</servlet-name>
+    <servlet-class>safast.action.SetCookie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetCookie</servlet-name>
+    <url-pattern>/SetCookie</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCookie</display-name>
+    <servlet-name>GetCookie</servlet-name>
+    <servlet-class>safast.action.GetCookie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCookie</servlet-name>
+    <url-pattern>/GetCookie</url-pattern>
+  </servlet-mapping>
 </web-app>

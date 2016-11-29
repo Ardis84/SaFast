@@ -59,8 +59,12 @@ public class ElencoSchedePersonale extends HttpServlet {
 		TempUtils tu = new TempUtils();
 		String body="";
 		
+		String id = (String)request.getParameter("id");
+		
 		QueryUtils qu = new QueryUtils();
 		String qry = FileUtils.getQuery("elencoSchede.sql", request);
+		qry = qu.setParam(qry,id);
+		qry = qu.setParam(qry,id);
 		
 		String schede="";
 		String schedeImportanti="";

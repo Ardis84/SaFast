@@ -115,7 +115,10 @@ function caricaSchedePersonali(){
 	loader.style.display = 'inline';
 	
 	$elenco = $("#elenco");
-	$.ajax(path+"/ElencoSchedePersonale" )
+	
+	var id 		= document.getElementById("idpersonale").value;
+	
+	$.ajax(path+"/ElencoSchedePersonale?id="+id )
 	  .done(function(el) {
 		$elenco.empty();
 	 	$elenco.append(el);
@@ -127,11 +130,100 @@ function caricaSchedePersonali(){
 	  });
 }
 
+/* function getCookie(){
+	var path = window.location.pathname;
+	$.ajax(path+"/GetCookie" )
+	  .done(function(el) {
+		var obj = new Object();
+		var ar = el.split("|");
+		for (var i = 0; i < ar.length; i++) {
+			var ck = ar[i];
+			if(ck!=null && ck!=""){
+				var arCk = ck.split("-");
+				obj[arCk[0]] = arCk[1];
+			}
+		}
+		return obj;
+	  })
+	  .fail(function(el) {
+		   alert( "Errore" );
+	  });
+} */
+
+function richiediPersonale(){	
+	var path = window.location.pathname;
+	var url      = window.location.href;
+	
+	var clouds = document.getElementById("clouds");
+	var loader = document.getElementById("loader");
+	
+	clouds.style.display = 'inline';
+	loader.style.display = 'inline';
+	
+	$.ajax(path+"/GetCookie" )
+	  .done(function(el) {
+		var obj = new Object();
+		var ar = el.split("|");
+		for (var i = 0; i < ar.length; i++) {
+			var ck = ar[i];
+			if(ck!=null && ck!=""){
+				var arCk = ck.split("-");
+				obj[arCk[0]] = arCk[1];
+			}
+		}
+		if("id" in obj){
+			caricaSchede();
+		}else{
+				$.ajax(path+"/ElencoPersonale" )
+				  .done(function(el) {
+					  $("<div id='SceltaPersonale' style='text-align:center;'>"+el+"</div>").appendTo("body");
+					  $( "#SceltaPersonale" ).dialog({
+					      modal: true,
+					      position: { my: 'top', at: 'top+150' },
+					      width:300,
+					      height:180,
+					      title:"Scelta Personale",
+					      buttons: {
+					    	  	Invia: function() {
+					    	  		var pers 	= document.getElementById("selPersonale");
+					    	  		var id 		= document.getElementById("idpersonale");
+					    	  		
+					    	  		var sel 	= pers.selectedOptions;
+					    	  		var value 	= sel[0].value;
+					    	  		
+					    	  		id.value = value;
+					    	  		
+					    	  		var cookie = "id-"+value+"|"
+					    	  		$.ajax(path+"/SetCookie?cookie="+cookie )
+					    	  	  	.done(function(el) {		    	  	  		
+										$("#SceltaPersonale").dialog( "close" );    	  		
+					    	  			caricaSchede();
+					    	  	  	})
+					    	  	  	.fail(function(){
+					    	  	  		
+					    	  	  	});
+					    	  				    	  	
+					    	  	}
+					    	}
+				  		})
+				  })	
+				  .fail(function(el) {
+					   alert( "Errore" );
+				  });
+		}
+	  })
+	  .fail(function(el) {
+		   alert( "Errore" );
+	  });
+
+}
 </script>
 </head>
 <!-- <body onload="goJava()">
 <form id="goJava" method="post" action="Index"></form> -->
-<body onload="caricaSchede()">
+<body onload="richiediPersonale()">
+
+<input type="hidden" value="" id="idpersonale"/>
 
 <div id="clouds"></div>
 <div id="loader"><img src="css/images/loader.gif"></div>

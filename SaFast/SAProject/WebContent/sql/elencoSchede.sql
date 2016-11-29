@@ -30,6 +30,6 @@ and 	np.IDRICHIESTA(+) = rc.IDRICHIESTECLIENTE
 and 	ans.CONVALIDADATAORA is null
 /****/
 /****/
-and 	(ans.idprogrammatore=107 or ra.IDPERSONALE = 107)
+and 	(ans.idprogrammatore=? or ra.IDPERSONALE = ?)
 order by sa.DATARICHIESTA desc, sa.NUMEROSCHEDA, rc.NUMERORICHIESTA 
 
